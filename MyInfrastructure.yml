@@ -323,6 +323,7 @@ Resources:
         FromPort: 3389
         IpProtocol: tcp
         ToPort: 3389
+      VpcId: !Ref VPC
 
   InternetSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -337,6 +338,7 @@ Resources:
         FromPort: 443
         IpProtocol: tcp
         ToPort: 443
+      VpcId: !Ref VPC
 
   Outputs:
     VPC:
