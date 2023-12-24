@@ -1,7 +1,7 @@
 Description: The following CloudFormation template is a work in progress where I am taking what I have learned and building out an infrastructure. 
 
 Parameters:
-  EnvironmentName:
+  EnvironmentName: 
     Description: An environment name that is prefixed to resource names
     Type: String
 
@@ -251,8 +251,6 @@ Resources:
       RouteTableId: !Ref PrivateRouteTable3
       SubnetId: !Ref PrivateSubnet3
 
-
-Resources:
   PublicLinuxEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -339,3 +337,40 @@ Resources:
         FromPort: 443
         IpProtocol: tcp
         ToPort: 443
+
+  Outputs:
+    VPC:
+      Description: A reference to the created VPC
+      Value: !Ref VPC
+
+    PublicSubnets:
+      Description: A list of the public subnets
+      Value: !Join [ ",", [ !Ref PublicSubnet1, !Ref PublicSubnet2, !Ref PublicSubnet3 ]]
+
+    PrivateSubnets:
+      Description: A list of the private subnets
+      Value: !Join [ ",", [ !Ref PrivateSubnet1, !Ref PrivateSubnet2, !Ref PrivateSubnet3 ]]
+
+    PublicSubnet1:
+      Description: A reference to the public subnet in the 1st Availability Zone
+      Value: !Ref PublicSubnet1
+
+    PublicSubnet2:
+      Description: A reference to the public subnet in the 2nd Availability Zone
+      Value: !Ref PublicSubnet2
+
+    PublicSubnet3:
+      Description: A reference to the public subnet in the 3rd Availability Zone
+      Value: !Ref PublicSubnet3
+
+    PrivateSubnet1:
+      Description: A reference to the private subnet in the 1st Availability Zone
+      Value: !Ref PrivateSubnet1
+
+    PrivateSubnet2:
+      Description: A reference to the private subnet in the 2nd Availability Zone
+      Value: !Ref PrivateSubnet2
+
+    PrivateSubnet3:
+      Description: A reference to the private subnet in the 3rd Availability Zone
+      Value: !Ref PrivateSubnet3
