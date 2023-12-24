@@ -338,7 +338,10 @@ Resources:
         FromPort: 443
         IpProtocol: tcp
         ToPort: 443
+<<<<<<< HEAD
       VpcId: !Ref VPC
+=======
+>>>>>>> main
 
   Outputs:
     VPC:
